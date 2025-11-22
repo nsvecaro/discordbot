@@ -1,0 +1,14 @@
+# Environment variables
+config.json
+.env
+
+# Node modules
+node_modules/
+
+# System files
+.DS_Store
+*.log
+
+# IDE
+.vscode/
+.idea/
