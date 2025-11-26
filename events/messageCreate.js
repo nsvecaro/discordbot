@@ -83,18 +83,11 @@ client.on(Events.MessageReactionAdd, async (reaction, user) => {
     
     if (embed.title === '📜 PRAVILA SERVERA') {
       const member = reaction.message.guild.members.cache.get(user.id);
-      const verifiedRole = reaction.message.guild.roles.cache.find(r => r.name === 'Verified');
+      const verifiedRole = reaction.message.guild.roles.cache.find(r => r.name === '✅ Verificiranㅤㅤㅤㅤㅤㅤ‎‎‎‎‎‎‎‎ㅤㅤㅤㅤㅤㅤㅤㅤㅤ');
       
       if (verifiedRole && member) {
         await member.roles.add(verifiedRole);
         
-        // Čekaj 1 sekundu pa daj drugi role
-        setTimeout(async () => {
-          const secondRole = reaction.message.guild.roles.cache.find(r => r.name === '------------------');
-          if (secondRole) {
-            await member.roles.add(secondRole);
-          }
-        }, 1500);
       }
     }
   }
