@@ -30,26 +30,31 @@ module.exports = async (message, config, client) => {
       {
         label: 'Top Lane',
         value: 'top',
+        emoji: '<:topl:1443259793056989385>'
         
       },
       {
         label: 'Jungle',
         value: 'jungle',
+        emoji: '<:jungle:1440003979693002945>'
         
       },
       {
         label: 'Mid Lane',
         value: 'mid',
+        emoji: '<:mid:1440004084722565258>'
         
       },
       {
         label: 'Dragon Lane',
         value: 'dragon',
+        emoji: '<:adc:1440004131841507439>'
         
       },
       {
         label: 'Support',
         value: 'support',
+        emoji: '<:support:1440004175651147846>'
     
       }
     ]);

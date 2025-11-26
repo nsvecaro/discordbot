@@ -27,7 +27,6 @@ module.exports = async (message, config, client) => {
     .setTitle(title)
     .setThumbnail('attachment://icon.png')
     .setDescription(lines)
-    .setTimestamp()
     .setFooter({ text: '[  P L J U G A  ] ℗' });
   
   await message.channel.send({ 

@@ -1,11 +1,10 @@
 module.exports = async (message, config, client) => {
     const responses = {
-      '!moto': 'Gagi je pimp, mi smo kurve.',
       '!goran': 'DALMACIJA!',
-      '!teo': 'picka',
-      '!vrijeme': 'Vrijeme je za ranked',
+      '!vrijeme': 'Vrijeme je za ranked😈',
       '!supp': 'BETTER SUPP ALWAYS WIN',
-      '!start': 'Start or I am leave'
+      '!start': 'Start or I am leave',
+      '!sekunda': 'Motam al lazem da sam brzo gotov'
     };
   
     if (responses[message.content]) {

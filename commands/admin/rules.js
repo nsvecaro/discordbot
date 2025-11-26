@@ -35,7 +35,6 @@ module.exports = async (message, config, client) => {
       'Koristi zdrav razum. Ako misliš da nešto nije okej, vjerojatno i nije.\n\n' +
       '> Kršenje pravila rezultira upozorenjem, mutom, kick-om ili ban-om, ovisno o težini prekršaja.'
     )
-    .setTimestamp()
     .setFooter({ text: '[  P L J U G A  ] ℗' });
   
   const sentMessage = await message.channel.send({ 

@@ -30,32 +30,27 @@ module.exports = async (message, config, client) => {
       {
         label: 'Sovereign',
         value: 'sovereign',
-        emoji: '<:mid:1441121671263158414>'
+        emoji: '<:sovereign:1440012737743945768>'
       },
       {
         label: 'Challenger',
         value: 'challenger',
-        emoji: '<:mid:1441121671263158414>'
+        emoji: '<:challenger:1440012690398511156>'
       },
       {
         label: 'Grandmaster',
         value: 'grandmaster',
-        emoji: '<:mid:1441121671263158414>'
+        emoji: '<:grandmaster:1440012849278746738>'
       },
       {
         label: 'Master',
         value: 'master',
-        emoji: '<:mid:1441121671263158414>'
+        emoji: '<:master:1440012813941866496>'
       },
       {
         label: 'Diamond',
         value: 'diamond',
-        emoji: '<:mid:1441121671263158414>'
-      },
-      {
-        label: 'Emerald',
-        value: 'emerald',
-        emoji: '<:mid:1441121671263158414>'
+        emoji: '<:diamond:1440012784363634809>'
       }
     ]);
   

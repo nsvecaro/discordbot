@@ -2,34 +2,6 @@
 
 Discord bot za upravljanje serverom.
 
-## Setup
-
-1. Kloniraj repozitorij
-```bash
-git clone <repository-url>
-cd PljugaBot
-```
-
-2. Instaliraj dependencies
-```bash
-npm install
-```
-
-3. Kreiraj `config.json` fajl
-```bash
-cp config.example.json config.json
-```
-
-4. Popuni `config.json` sa svojim vrijednostima:
-   - `token`: Discord bot token (iz [Discord Developer Portal](https://discord.com/developers/applications))
-   - `clientId`: Bot Application ID
-   - `adminId`: Tvoj Discord user ID
-
-5. Pokreni bota
-```bash
-node index.js
-```
-
 ## Komande
 
 ### Admin komande

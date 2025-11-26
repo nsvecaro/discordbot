@@ -101,10 +101,40 @@ client.on(Events.MessageReactionAdd, async (reaction, user) => {
 });
 
 
+// Helper funkcija za automatski Wild Rift role
+const updateWildRiftRole = async (member, guild) => {
+  const wildRiftRoleName = 'ㅤㅤㅤㅤㅤㅤ∙ 𝗪𝗜𝗟𝗗 𝗥𝗜𝗙𝗧 ∙‎‎‎‎‎‎‎‎ㅤㅤㅤㅤㅤㅤㅤㅤㅤ';
+  const wildRiftRole = guild.roles.cache.find(r => r.name === wildRiftRoleName);
+
+  if (!wildRiftRole) return;
+
+  // Svi rankovi
+  const allRanks = ['Sovereign', 'Challenger', 'Grandmaster', 'Master', 'Diamond', 'Emerald'];
+
+  // Svi legendary rankovi
+  const allLegendaryRanks = ['Legend', 'Legendary Challenger', 'Legendary Grandmaster', 'Legendary Master', 'Legendary Commander'];
+
+  // Svi lane-ovi
+  const allLanes = ['Top Lane', 'Jungle', 'Mid Lane', 'Dragon Lane', 'Support'];
+
+  // Provjeri ima li korisnik bilo koju od tih uloga
+  const hasAnyRole = [...allRanks, ...allLegendaryRanks, ...allLanes].some(roleName => {
+    const role = guild.roles.cache.find(r => r.name === roleName);
+    return role && member.roles.cache.has(role.id);
+  });
+
+  // Dodaj ili makni Wild Rift role
+  if (hasAnyRole && !member.roles.cache.has(wildRiftRole.id)) {
+    await member.roles.add(wildRiftRole);
+  } else if (!hasAnyRole && member.roles.cache.has(wildRiftRole.id)) {
+    await member.roles.remove(wildRiftRole);
+  }
+};
+
 // StringSelectMenu handler
 client.on(Events.InteractionCreate, async (interaction) => {
   if (!interaction.isStringSelectMenu()) return;
-  
+
   if (interaction.customId === 'lane_select') {
     const member = interaction.member;
     
@@ -152,7 +182,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
     // Čekaj 1 sekundu pa provjeri opet
     setTimeout(async () => {
       await member.fetch();
-      
+
       // Dodaj ako još nisu dodani
       for (const laneValue of selectedLanes) {
         const roleName = roleMap[laneValue];
@@ -161,8 +191,11 @@ client.on(Events.InteractionCreate, async (interaction) => {
           await member.roles.add(role);
         }
       }
+
+      // Provjeri i dodaj/ukloni Wild Rift role
+      await updateWildRiftRole(member, interaction.guild);
     }, 1000);
-    
+
     // Pripremi poruku
     let message = '';
     if (addedRoles.length > 0) {
@@ -245,8 +278,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
       'challenger': 'Challenger',
       'grandmaster': 'Grandmaster',
       'master': 'Master',
-      'diamond': 'Diamond',
-      'emerald': 'Emerald'
+      'diamond': 'Diamond'
     };
     
     const allRanks = Object.values(rankMap);
@@ -267,21 +299,27 @@ client.on(Events.InteractionCreate, async (interaction) => {
       if (role) {
         await member.roles.add(role);
       }
-      
+
+      // Provjeri i dodaj/ukloni Wild Rift role
+      await updateWildRiftRole(member, interaction.guild);
+
       const reply = await interaction.reply({
         content: `✅ Tvoj rank: ${rankName}`,
         flags: [64]
       });
-      
+
       setTimeout(() => {
         interaction.deleteReply().catch(console.error);
       }, 5000);
     } else {
+      // Provjeri i dodaj/ukloni Wild Rift role
+      await updateWildRiftRole(member, interaction.guild);
+
       const reply = await interaction.reply({
         content: '❌ Rank uklonjen',
         flags: [64]
       });
-      
+
       setTimeout(() => {
         interaction.deleteReply().catch(console.error);
       }, 5000);
@@ -317,21 +355,27 @@ client.on(Events.InteractionCreate, async (interaction) => {
       if (role) {
         await member.roles.add(role);
       }
-      
+
+      // Provjeri i dodaj/ukloni Wild Rift role
+      await updateWildRiftRole(member, interaction.guild);
+
       const reply = await interaction.reply({
         content: `✅ Tvoj rank: ${lrankName}`,
         flags: [64]
       });
-      
+
       setTimeout(() => {
         interaction.deleteReply().catch(console.error);
       }, 5000);
     } else {
+      // Provjeri i dodaj/ukloni Wild Rift role
+      await updateWildRiftRole(member, interaction.guild);
+
       const reply = await interaction.reply({
         content: '❌ Rank uklonjen',
         flags: [64]
       });
-      
+
       setTimeout(() => {
         interaction.deleteReply().catch(console.error);
       }, 5000);
